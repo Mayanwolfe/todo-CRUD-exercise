@@ -24,10 +24,14 @@ mongoose.connect(
 )
 
 // GET METHOD
-app.get("/", (req, res) => {
-    TodoTask.find({}, (err, tasks) => {
-        res.render("index.ejs", { todoTasks: tasks });
-    });
+app.get("/", async (req, res) => {
+    try {
+        TodoTask.find({}, (err, tasks) => {
+            res.render("index.ejs", { todoTasks: tasks });
+        });
+    } catch (err) {
+        if (err) return res.status(500).send(err);
+    }
 });
 
 //POST METHOD
