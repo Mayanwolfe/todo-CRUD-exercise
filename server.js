@@ -1,4 +1,4 @@
-//npm install --save express mongoose ejs dotenv
+//npm install express mongoose ejs dotenv
 //npm install --save-dev nodemon
 
 //"start": "nodemon server.js"
