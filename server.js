@@ -1,3 +1,9 @@
+//npm install --save express mongoose ejs dotenv
+//npm install --save-dev nodemon
+
+//"start": "nodemon server.js"
+
+//Declare Variables
 const express = require("express");
 const app = express();
 const PORT = 8000;
@@ -5,11 +11,12 @@ const mongoose = require("mongoose");
 const TodoTask = require("./models/TodoTask");
 require('dotenv').config()
 
+//Set Middleware
 app.set("view engine", "ejs");
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }));
 
-
+//Connect to Mongo
 mongoose.connect(
     process.env.DB_CONNECTION, 
     { useNewUrlParser: true }, 
@@ -75,4 +82,5 @@ app
         });
     });
 
+//Start Server
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
